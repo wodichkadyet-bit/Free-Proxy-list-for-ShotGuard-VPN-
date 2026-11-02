@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShotGuard VPN — Скорость и защита в сети</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+        body {
+            background-color: #0b0f19;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        .container {
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .logo-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .logo-container img {
+            width: 90px;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        h1 {
+            font-size: 26px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 0.5px;
+        }
+        .subtitle {
+            font-size: 14px;
+            color: #8b9bb4;
+            margin-top: 5px;
+            margin-bottom: 25px;
+        }
+        .section-title {
+            align-self: flex-start;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #e2e8f0;
+        }
+        .card {
+            background-color: #131b2e;
+            border: 1px solid #1e293b;
+            border-radius: 12px;
+            padding: 15px;
+            width: 100%;
+            margin-bottom: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .card-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #38bdf8;
+        }
+        .card-row {
+            display: flex;
+            gap: 8px;
+        }
+        .url-input {
+            flex: 1;
+            background-color: #080c14;
+            border: 1px solid #1e293b;
+            border-radius: 8px;
+            color: #94a3b8;
+            padding: 10px;
+            font-size: 12px;
+            outline: none;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .copy-btn {
+            background-color: #0284c7;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0 16px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+        .copy-btn:active {
+            background-color: #0369a1;
+        }
+        .copy-btn.copied {
+            background-color: #10b981;
+        }
+        .instruction {
+            background-color: #131b2e;
+            border: 1px solid #1e293b;
+            border-radius: 12px;
+            padding: 15px;
+            width: 100%;
+            margin-top: 15px;
+            font-size: 13px;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+        .instruction ol {
+            padding-left: 20px;
+        }
+        .instruction li {
+            margin-bottom: 6px;
+        }
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            background-color: #10b981;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            display: none;
+            transition: opacity 0.3s;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Шапка -->
+        <div class="logo-container">
+            <!-- Можете заменить src на ссылку на вашу иконку или логотип -->
+            <div style="font-size: 40px; margin-bottom: 5px;">🛡️</div>
+            <h1>ShotGuard VPN</h1>
+            <div class="subtitle">Скорость и защита в сети</div>
+        </div>
+
+        <div class="section-title">Подписки</div>
+
+        <!-- Список подписок -->
+        <div class="card">
+            <div class="card-title">AntiListProxy ShotGuard</div>
+            <div class="card-row">
+                <input type="text" class="url-input" value="https://raw.githubusercontent.com/wodichkadyet-bit/Free-Proxy-list-for-ShotGuard-VPN-/refs/heads/main/AntiListProxy%20ShotGuard" readonly>
+                <button class="copy-btn" onclick="copyLink(this)">Копировать</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">BlackProxy ShotGuard</div>
+            <div class="card-row">
+                <input type="text" class="url-input" value="https://raw.githubusercontent.com/wodichkadyet-bit/Free-Proxy-list-for-ShotGuard-VPN-/refs/heads/main/BlackProxy%20ShotGuard" readonly>
+                <button class="copy-btn" onclick="copyLink(this)">Копировать</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">BlacklistsProxy</div>
+            <div class="card-row">
+                <input type="text" class="url-input" value="https://raw.githubusercontent.com/wodichkadyet-bit/Free-Proxy-list-for-ShotGuard-VPN-/refs/heads/main/BlacklistsProxy" readonly>
+                <button class="copy-btn" onclick="copyLink(this)">Копировать</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">CompactProxy</div>
+            <div class="card-row">
+                <input type="text" class="url-input" value="https://raw.githubusercontent.com/wodichkadyet-bit/Free-Proxy-list-for-ShotGuard-VPN-/refs/heads/main/CompactProxy" readonly>
+                <button class="copy-btn" onclick="copyLink(this)">Копировать</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">ShotGuard VPN Proxy</div>
+            <div class="card-row">
+                <input type="text" class="url-input" value="https://raw.githubusercontent.com/wodichkadyet-bit/Free-Proxy-list-for-ShotGuard-VPN-/refs/heads/main/ShotGuard%20VPN%20Proxy" readonly>
+                <button class="copy-btn" onclick="copyLink(this)">Копировать</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">TimeWeb ShotGuard</div>
+            <div class="card-row">
+                <input type="text" class="url-input" value="https://raw.githubusercontent.com/wodichkadyet-bit/Free-Proxy-list-for-ShotGuard-VPN-/refs/heads/main/TimeWeb%20ShotGuard" readonly>
+                <button class="copy-btn" onclick="copyLink(this)">Копировать</button>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-title">WhitelistsProxy</div>
+            <div class="card-row">
+                <input type="text" class="url-input" value="https://raw.githubusercontent.com/wodichkadyet-bit/Free-Proxy-list-for-ShotGuard-VPN-/refs/heads/main/WhitelistsProxy" readonly>
+                <button class="copy-btn" onclick="copyLink(this)">Копировать</button>
+            </div>
+        </div>
+
+        <!-- Блок инструкции -->
+        <div class="instruction">
+            <div style="font-weight: 600; color: #ffffff; margin-bottom: 8px;">Подключение</div>
+            <ol>
+                <li>Установите клиент — Happ или V2RayTun</li>
+                <li>Скопируйте нужную подписку выше.</li>
+                <li>Добавьте ссылку в разделе подписок клиента и обновите её.</li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- Уведомление о копировании -->
+    <div class="toast" id="toast">Ссылка скопирована!</div>
+
+    <script>
+        function copyLink(button) {
+            const input = button.previousElementSibling;
+            input.select();
+            input.setSelectionRange(0, 99999); // Для мобильных устройств
+            
+            navigator.clipboard.writeText(input.value).then(() => {
+                button.textContent = "Скопировано!";
+                button.classList.add("copied");
+                
+                showToast();
+
+                setTimeout(() => {
+                    button.textContent = "Копировать";
+                    button.classList.remove("copied");
+                }, 2000);
+            });
+        }
+
+        function showToast() {
+            const toast = document.getElementById("toast");
+            toast.style.display = "block";
+            setTimeout(() => {
+                toast.style.display = "none";
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
